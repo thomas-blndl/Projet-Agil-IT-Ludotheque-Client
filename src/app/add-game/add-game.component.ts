@@ -1,6 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {UserService} from '../_services/user.service';
+import {Observable} from 'rxjs';
+import {Jeu} from '../_models/jeu';
+import {GamesService} from '../_services/games.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-add-game',
@@ -9,14 +13,15 @@ import {HttpClientModule} from '@angular/common/http';
 })
 export class AddGameComponent implements OnInit {
 
+  games$: Observable<Jeu>;
+  game: Jeu;
+
   readonly categories: string[] = ['---', 'Escape Game', 'Murder Party', 'Jeu de plateau', 'Jeu de cartes',
     'Cartes à jouer', 'Jeu de rôle', 'Jeu d\'ambiance', 'Jeu de lettres', 'Jeu de dés', 'Jeu de tuiles', 'Jeu de pions', 'Jeu de logique', 'Autres'];
   readonly mecaniques: string[] = ['---', 'Abstrait', 'Humour', 'Jeu de plateau', 'Enquêtes & Mystères', 'Antiquité', 'Western', 'Jeu de Cartes', 'Connaissances', 'jeu de tuiles', 'Lettres', 'Politique', 'Dessin', 'Mime', 'Zombies', 'Contes', 'Observation', 'Bande dessinée', 'Animaux', 'Affrontement', 'Commerce', 'Jeu de rôle', 'Chance & Hasard', 'Cuisine', 'Bourse & finances', 'Divers', 'Histoire', 'choix multiples', 'Jeu d\'Ambiance', 'Chiffres', 'Lettres & chiffres'];
   readonly editeurs: string[] = ['jsp', 'alo', 'test'];
   readonly themes: string[] = ['theme1', 'theme2', 'theme3'];
-  readonly langues: string[] = ['francais', 'anglais', 'allemand'];
-
-  @Input() currEditeur: string;
+  readonly langues: string[];
 
   formulaire = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
@@ -35,12 +40,26 @@ export class AddGameComponent implements OnInit {
 
   });
 
-  constructor() {
+  constructor(private gameService: GamesService, private route: ActivatedRoute) {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.games$ = gameService.list();
   }
 
   ngOnInit(): void {
-  }
+    this.games$.subscribe(
+      game => {
+        this.game = game;
+        console.log('Le jeu : ', game);
+        console.log('La langue du jeu: ', game.langue);
 
+        if (this.langues.indexOf(game.langue) < 0 ) {this.langues.push(game.langue); }
+        if (this.editeurs.indexOf(game.editeur) < 0 ) { this.editeurs.push(game.editeur); }
+        if (this.categories.indexOf(game.categorie) < 0 ) { this.categories.push(game.categorie); }
+        if (this.themes.indexOf(game.theme) < 0 ) { this.themes.push(game.theme); }
+      }
+    );
+    console.log('liste des langues', this.langues);
+  }
   get nom(): AbstractControl {
     return this.formulaire.get('nom');
   }
@@ -90,8 +109,7 @@ export class AddGameComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  onSubmit(): void {
     console.log('J\'envoie : ', this);
-
   }
 }

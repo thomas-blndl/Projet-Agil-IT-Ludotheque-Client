@@ -5,11 +5,11 @@ export interface Jeu {
   regles: string;
   categorie: string;
   langue: string;
-  nombre_joueurs: string;
+  nombre_joueurs: number;
   url_media: string;
   age: string;
-  poids: string;
-  duree: string;
+  poids: number;
+  duree: number;
   editeur: string;
   theme: string;
 }
