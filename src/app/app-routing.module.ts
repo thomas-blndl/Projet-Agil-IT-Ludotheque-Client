@@ -3,12 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LpSolverTestComponent} from './lp-solver-test/lp-solver-test.component';
+import {GamesListComponent} from './games-list/games-list.component';
+import {FormRegisterComponent} from './form-register/form-register.component';
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'ro', component: LpSolverTestComponent}
-];
+  {path: 'games', component: GamesListComponent},
+  {path: 'ro', component: LpSolverTestComponent},
+  {path: 'formuser', component: FormRegisterComponent},
+  {path: '', component: GamesListComponent}
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

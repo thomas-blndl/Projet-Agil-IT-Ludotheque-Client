@@ -1,5 +1,35 @@
-<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
-  Email : <input type="text" formControlName="email"><br>
-  Mot de passe : <input type="password" formControlName="password"><br>
-  <button [disabled]="!formulaire.valid">Valide</button>
-</form>
+<div class="main">
+  <div class="container">
+    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+        <input type="text" formControlName="email" id="email" class="valide" (input)="inputForm('mail')">
+        <label for="email" #labelMail>
+          <span style="transition-delay: 0ms">E</span>
+          <span style="transition-delay: 50ms">m</span>
+          <span style="transition-delay: 100ms">a</span>
+          <span style="transition-delay: 150ms">i</span>
+          <span style="transition-delay: 200ms">l</span>
+        </label>
+      </div>
+      <div class="form-control">
+        <input type="password" formControlName="password" id="password" class="valide" (input)="inputForm('pass')">
+        <label for="password" #labelPass>
+          <span style="transition-delay: 0ms">M</span>
+          <span style="transition-delay: 50ms">o</span>
+          <span style="transition-delay: 100ms">t</span>
+          <span style="transition-delay: 150ms"> </span>
+          <span style="transition-delay: 200ms">d</span>
+          <span style="transition-delay: 250ms">e</span>
+          <span style="transition-delay: 300ms"> </span>
+          <span style="transition-delay: 350ms">p</span>
+          <span style="transition-delay: 400ms">a</span>
+          <span style="transition-delay: 450ms">s</span>
+          <span style="transition-delay: 500ms">s</span>
+          <span style="transition-delay: 550ms">e</span>
+        </label>
+      </div>
+      <button [disabled]="!formulaire.valid" class="btn">Valide</button>
+    </form>
+  </div>
+
+</div>

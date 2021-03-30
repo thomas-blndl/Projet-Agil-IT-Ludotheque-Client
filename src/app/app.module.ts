@@ -21,6 +21,14 @@ import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
 
+import {MenubarModule} from 'primeng/menubar';
+import {ButtonModule} from 'primeng/button';
+import { GamesListComponent } from './games-list/games-list.component';
+import {CardModule} from 'primeng/card';
+
+import { FormRegisterComponent } from './form-register/form-register.component';
+
+
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -28,7 +36,12 @@ registerLocaleData(localeFr, 'fr');
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    LpSolverTestComponent
+    LpSolverTestComponent,
+
+    GamesListComponent,
+
+    FormRegisterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -39,7 +52,10 @@ registerLocaleData(localeFr, 'fr');
     MessagesModule,
     ToastModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MenubarModule,
+    ButtonModule,
+    CardModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

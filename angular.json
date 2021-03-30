@@ -131,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "ludotheque-client"
+  "defaultProject": "ludotheque-client",
+  "cli": {
+    "analytics": "b91e9fbe-e1b5-4a01-ba46-9e115f30ae96"
+  }
 }

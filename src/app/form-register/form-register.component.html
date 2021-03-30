@@ -1,0 +1,78 @@
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+    <div class="p-field p-grid">
+    <label for="nom" class="p-col-fixed" style="width:100px">Nom</label>
+    <div class="p-col">
+      <input id="nom" type="text" pInputText formControlName="nom">
+      <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="nom?.errors.required">Le nom est obligatoire</div>
+        <div *ngIf="nom?.errors.minlength">Le nom doit comporter au moins 2 caractères</div>
+        <div *ngIf="nom?.errors.maxlength">Le nom doit comporter moins de 100 caractères</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="prenom" class="p-col-fixed" style="width:100px">Prénom</label>
+    <div class="p-col">
+      <input id="prenom" type="text" pInputText formControlName="prenom">
+      <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="prenom?.errors.required">Le prénom est obligatoire</div>
+        <div *ngIf="prenom?.errors.minlength">Le prénom doit comporter au moins 2 caractères</div>
+        <div *ngIf="prenom?.errors.maxlength">Le prénom doit comporter moins de 100 caractères</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="pseudo" class="p-col-fixed" style="width:100px">Pseudo</label>
+    <div class="p-col">
+      <input id="pseudo" type="text" pInputText formControlName="pseudo">
+      <div *ngIf="pseudo.invalid && (pseudo.dirty || pseudo.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="pseudo?.errors.required">Le pseudo est obligatoire</div>
+        <div *ngIf="pseudo?.errors.minlength">Le pseudo doit comporter au moins 2 caractères</div>
+        <div *ngIf="pseudo?.errors.maxlength">Le pseudo doit comporter moins de 100 caractères</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="mail" class="p-col-fixed" style="width:100px">Adresse Mail</label>
+    <div class="p-col">
+      <input id="mail" type="text" pInputText formControlName="mail">
+      <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="mail?.errors.required">L'adresse mail est obligatoire</div>
+        <div *ngIf="mail?.errors.email">Le format doit être : example@mail.com</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="mdp1" class="p-col-fixed" style="width:100px">Mot de passe</label>
+    <div class="p-col">
+      <input id="mdp1" type="text" pInputText formControlName="mdp1">
+      <div *ngIf="mdp1.invalid && (mdp1.dirty || mdp1.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="mdp1?.errors.required">L'adresse mdp1 est obligatoire</div>
+        <div *ngIf="mdp1?.errors.pattern">Le mot de passe doit contenir au moins : 1 majuscule, 1 chiffre et 8 caractères</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="mdp2" class="p-col-fixed" style="width:100px">Confirmez votre mot de passe</label>
+    <div class="p-col">
+      <input id="mdp2" type="text" pInputText formControlName="mdp2">
+      <div *ngIf="mdp2.invalid && (mdp2.dirty || mdp2.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="mdp2?.errors.required">L'adresse mdp2 est obligatoire</div>
+      </div>
+      <div *ngIf="!checkPasswords()">Les deux mots de passe doivent être les mêmes</div>
+    </div>
+  </div>
+</form>
+<button [disabled]="!formulaire.valid" (click)="onSubmit()">Valide</button>
+
+<div>
+  valeur saisie : {{formulaire.value | json}}
+</div>
+<div>
+  Formulaire valide : {{formulaire.valid}}
+</div>
+
+
+
+
+

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthentificationService} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
@@ -11,6 +11,9 @@ import {MessageService} from 'primeng/api';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('labelMail') inputMail: ElementRef;
+  @ViewChild('labelPass') inputPass: ElementRef;
+
   form: any = {
     email: null,
     password: null
@@ -20,13 +23,14 @@ export class LoginComponent implements OnInit {
   error = '';
 
   formulaire = new FormGroup({
-    email: new FormControl('robert.duchmol@domain.fr', [Validators.required]),
-    password: new FormControl('secret00', [Validators.required])
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
               private route: ActivatedRoute) {
   }
+
 
   ngOnInit(): void {
     // get return url from route parameters or default to '/'
@@ -77,5 +81,14 @@ export class LoginComponent implements OnInit {
         );
     */
 
+  }
+  inputForm(type: string): void {
+    if (type === 'mail') {
+      if(this.email.value !== '') this.inputMail.nativeElement.classList.add('valide');
+      else this.inputMail.nativeElement.classList.remove('valide');
+    } else if(type === 'pass') {
+      if(this.password.value !== '') this.inputPass.nativeElement.classList.add('valide');
+      else this.inputPass.nativeElement.classList.remove('valide');
+    }
   }
 }

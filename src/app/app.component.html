@@ -1,11 +1,12 @@
-<ul>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
-  <li><a [routerLink]="['/ro']">Exo RO</a></li>
-</ul>
-<router-outlet></router-outlet>
+<p-menubar>
+  <button pButton label="Games" icon="pi pi-list" (click)="redirect('/games')"></button>
+  <button pButton label="Login" icon="pi pi-sign-in" *ngIf="authService.isLoggedOut$ | async" (click)="redirect('/login')"></button>
+  <button pButton label="Profile" icon="pi pi-fw pi-user" *ngIf="authService.isLoggedIn$ | async" (click)="redirect('/profile')"></button>
+  <button pButton label="Logout" icon="pi pi-sign-out" *ngIf="authService.isLoggedIn$ | async" (click)="logout()"></button>
+  <button pButton label="Exo RO" icon="pi pi-fw pi-pencil" (click)="redirect('/ro')"></button>
+  <button pButton label="Formulaire register" icon="pi pi-fw pi-pencil" (click)="redirect('/formuser')"></button>
+</p-menubar>
 
 <p-toast position="top-right" key="main"></p-toast>
+<router-outlet></router-outlet>
 
-<button (click)="show()">test</button>
