@@ -1,5 +1,5 @@
 <p-menubar>
-  <button pButton label="Login" icon="pi pi-power-on" *ngIf="authService.isLoggedOut$ | async" (click)="redirect('/login')"></button>
+  <button pButton label="Login" icon="pi pi-id-card" *ngIf="authService.isLoggedOut$ | async" (click)="redirect('/login')"></button>
   <button pButton label="Profile" icon="pi pi-fw pi-user" *ngIf="authService.isLoggedIn$ | async" (click)="redirect('/profile')"></button>
   <button pButton label="Logout" icon="pi pi-power-off" *ngIf="authService.isLoggedIn$ | async" (click)="logout()"></button>
   <button pButton label="Exo RO" icon="pi pi-fw pi-pencil" (click)="redirect('/ro')"></button>
