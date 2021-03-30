@@ -9,7 +9,7 @@ import * as moment from 'moment';
 import {MessageService} from 'primeng/api';
 
 
-const httpOptions = {
+export const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 

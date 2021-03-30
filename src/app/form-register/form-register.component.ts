@@ -3,8 +3,9 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 import {User} from '../_models/user';
 import {UserService} from '../_services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthentificationService} from '../_services/authentification.service';
+import {AuthentificationService, httpOptions} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-form-register',
@@ -25,7 +26,7 @@ export class FormRegisterComponent implements OnInit {
     mdp2: new FormControl('',[Validators.required, Validators.pattern('(?=^.{8,}$)((?=.*\\d))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$')]),
   });
 
-  constructor(private serviceUser: UserService, private route: ActivatedRoute, private  router: Router) { }
+  constructor(private serviceUser: UserService, private route: ActivatedRoute, private  router: Router, private http: HttpClient ) { }
 
   ngOnInit(): void {
 
@@ -62,7 +63,20 @@ export class FormRegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.formulaire.value);
+    //this.newUser = this.formulaire.value;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      })
+    };
+    this.http.post<any>('http://localhost:8000/api/auth/register', {
+      pseudo: this.pseudo.value,
+      nom: this.nom.value,
+      prenom: this.prenom.value,
+      email: this.mail.value,
+      password: this.mdp1.value
+    }, httpOptions).subscribe((rep) => console.log(rep));
   }
 
 }
