@@ -22,6 +22,8 @@ import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component
 import {MarkdownModule} from 'ngx-markdown';
 import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
+import { GamesListComponent } from './games-list/games-list.component';
+import {CardModule} from 'primeng/card';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -30,7 +32,8 @@ registerLocaleData(localeFr, 'fr');
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    LpSolverTestComponent
+    LpSolverTestComponent,
+    GamesListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     ReactiveFormsModule,
     MenubarModule,
-    ButtonModule
+    ButtonModule,
+    CardModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
