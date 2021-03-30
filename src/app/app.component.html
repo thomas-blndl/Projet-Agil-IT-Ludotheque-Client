@@ -4,8 +4,6 @@
   <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
   <li><a [routerLink]="['/ro']">Exo RO</a></li>
 </ul>
+<p-toast position="top-right" key="main"></p-toast>
 <router-outlet></router-outlet>
 
-<p-toast position="top-right" key="main"></p-toast>
-
-<button (click)="show()">test</button>
