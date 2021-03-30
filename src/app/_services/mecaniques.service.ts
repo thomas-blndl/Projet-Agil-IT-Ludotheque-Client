@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {catchError, find, map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -11,20 +11,13 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class GamesService {
+
+export class MecaniquesService {
 
   constructor(private http: HttpClient) { }
 
-  list(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/jeux`, httpOptions)
-      .pipe(
-        map(g => g.data.item),
-        catchError(err => throwError(err))
-      );
-  }
-
-  getGameById(id: number): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/jeux/${id}`, httpOptions)
+  getMeca(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/mecanics`, httpOptions)
       .pipe(
         map(g => g.data.item),
         catchError(err => throwError(err))

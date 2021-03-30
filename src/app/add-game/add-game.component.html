@@ -13,23 +13,22 @@
   <div class="p-field p-grid">
     <label for="description" class="p-col-fixed" style="width:100px">Description</label>
     <div class="p-col">
-      <input id="description" type="text" pInputText formControlName="description">
-        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="ng-dirty ng-invalid">
-          <div *ngIf="description?.errors.required">La description est obligatoire</div>
-          <div *ngIf="description?.errors.pattern">La description doit comporter seulement des lettres</div>
-        </div>
+      <textarea rows="3" cols="30" id="description" type="text" pInputTextarea formControlName="description"></textarea>
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="description?.errors.required">La description est obligatoire</div>
+      </div>
     </div>
   </div>
   <div class="p-field p-grid">
-    <p-dropdown [options]="themes" placeholder="Selectionnez un thème" optionLabel="theme"
+    <p-dropdown [options]="themes" placeholder="Selectionnez un thème"
                 [showClear]="true"></p-dropdown>
   </div>
   <div class="p-field p-grid">
-    <p-dropdown [options]="editeurs" placeholder="Selectionnez un éditeur" optionLabel="editeur"
+    <p-dropdown [options]="editeurs" placeholder="Selectionnez un éditeur"
                 [showClear]="true"></p-dropdown>
   </div>
   <div class="p-field p-grid">
-    <p-dropdown [options]="mecaniques" placeholder="Selectionnez une mécanique" optionLabel="mecanique"
+    <p-dropdown [options]="mecaniques" placeholder="Selectionnez une mécanique"
                 [showClear]="true"></p-dropdown>
   </div>
   <div class="p-field p-grid">
@@ -37,31 +36,30 @@
     <div class="p-col">
       <input id="url_media" type="url" pInputText formControlName="url_media">
       <div *ngIf="url_media.invalid && (url_media.dirty || url_media.touched)" class="ng-dirty ng-invalid">
-          <!-- Possible Validators -->
+        <!-- Possible Validators -->
       </div>
     </div>
   </div>
   <div class="p-field p-grid">
-    <p-dropdown [options]="categories" placeholder="Selectionnez une catégorie" optionLabel="categorie"
-                [showClear]="true"></p-dropdown>
+    <p-dropdown [options]="categories" placeholder="Selectionnez une catégorie" [showClear]="true"></p-dropdown>
   </div>
   <div class="p-field p-grid">
     <label for="regles" class="p-col-fixed" style="width:100px">Regles</label>
     <div class="p-col">
-      <input id="regles" type="text" pInputText formControlName="regles">
+      <textarea rows="3" cols="30" id="regles" type="text" pInputTextarea id="regles" type="text" formControlName="regles"></textarea>
       <div *ngIf="regles.invalid && (regles.dirty || regles.touched)" class="ng-dirty ng-invalid">
         <div *ngIf="regles?.errors.required">Les regles sont obligatoires</div>
       </div>
     </div>
   </div>
   <div class="p-field p-grid">
-    <p-dropdown [options]="langues" placeholder="Selectionnez une langue" optionLabel="categorie"
+    <p-dropdown [options]="langues" placeholder="Selectionnez une langue"
                 [showClear]="true"></p-dropdown>
   </div>
   <div class="p-field p-grid">
     <label for="nbJoueurs" class="p-col-fixed" style="width:100px">Nombre de joueur</label>
     <div class="p-col">
-      <input id="nbJoueurs" type="number" pInputText formControlName="nbJoueurs">
+      <input id="nbJoueurs" type="number" pInputText formControlName="nbJoueur">
       <div *ngIf="nbJoueur.invalid && (nbJoueur.dirty || nbJoueur.touched)" class="ng-dirty ng-invalid">
         <div *ngIf="nbJoueur?.errors.required">Le nombre de joueur est obligatoire</div>
         <div *ngIf="nbJoueur?.errors.min">Il doit y avoir 2 joueurs minimum</div>
@@ -81,13 +79,13 @@
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="poid" class="p-col-fixed" style="width:100px">Poid</label>
+    <label for="poids" class="p-col-fixed" style="width:100px">Poids</label>
     <div class="p-col">
-      <input id="poid" type="number" pInputText formControlName="poid">
-      <div *ngIf="poid.invalid && (poid.dirty || poid.touched)" class="ng-dirty ng-invalid">
-        <div *ngIf="poid?.errors.required">Le poid est obligatoire</div>
-        <div *ngIf="poid?.errors.min">Le poid doit être de 0.100 minimum</div>
-        <div *ngIf="poid?.errors.max">Le poid doit être de 5.00 maximum</div>
+      <input id="poids" type="number" pInputText formControlName="poids">
+      <div *ngIf="poids.invalid && (poids.dirty || poids.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="poids?.errors.required">Le poids est obligatoire</div>
+        <div *ngIf="poids?.errors.min">Le poids doit être de 0.100 minimum</div>
+        <div *ngIf="poids?.errors.max">Le poids doit être de 5.00 maximum</div>
       </div>
     </div>
   </div>

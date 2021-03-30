@@ -63,7 +63,6 @@ export class FormRegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    //this.newUser = this.formulaire.value;
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
