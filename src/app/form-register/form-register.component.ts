@@ -76,7 +76,9 @@ export class FormRegisterComponent implements OnInit {
       prenom: this.prenom.value,
       email: this.mail.value,
       password: this.mdp1.value
-    }, httpOptions).subscribe((rep) => console.log(rep));
+    }, httpOptions).subscribe((rep) => {
+      if (rep.data.value === 'User successfully registered') { this.router.navigate(['']); }
+    });
   }
 
 }
