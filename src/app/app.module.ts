@@ -24,6 +24,7 @@ import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
 import { GamesListComponent } from './games-list/games-list.component';
 import {CardModule} from 'primeng/card';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -33,7 +34,8 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-    GamesListComponent
+    GamesListComponent,
+    GameDetailComponent
   ],
   imports: [
     BrowserModule,
