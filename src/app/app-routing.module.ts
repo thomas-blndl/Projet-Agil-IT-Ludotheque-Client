@@ -6,16 +6,17 @@ import {LpSolverTestComponent} from './lp-solver-test/lp-solver-test.component';
 import {GamesListComponent} from './games-list/games-list.component';
 import {AddGameComponent} from './add-game/add-game.component';
 import {FormRegisterComponent} from './form-register/form-register.component';
+import {GameDetailComponent} from './game-detail/game-detail.component';
 
 const routes: Routes = [
   {path: '', component: GamesListComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'games', component: GamesListComponent},
+  {path: 'games/:id', component: GameDetailComponent},
   {path: 'ro', component: LpSolverTestComponent},
   {path: 'addgame', component: AddGameComponent},
   {path: 'formuser', component: FormRegisterComponent},
-  {path: '', component: GamesListComponent}
 ];
 
 @NgModule({

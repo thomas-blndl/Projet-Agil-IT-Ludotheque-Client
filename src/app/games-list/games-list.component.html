@@ -13,5 +13,8 @@
         Âge minimum des joueurs : {{g.age}}
       </p>
     </ng-template>
+    <ng-template pTemplate="footer">
+      <button pButton type="button" class="p-button-raised" label="Plus d'info" icon="pi pi-info-circle" [routerLink]="['/games', g.id]"></button>
+    </ng-template>
   </p-card>
 </div>
