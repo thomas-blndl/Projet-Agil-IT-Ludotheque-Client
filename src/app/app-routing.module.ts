@@ -9,7 +9,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'games', component: GamesListComponent},
-  {path: 'ro', component: LpSolverTestComponent}
+  {path: 'ro', component: LpSolverTestComponent},
+  {path: '', component: GamesListComponent}
 ];
 
 @NgModule({
