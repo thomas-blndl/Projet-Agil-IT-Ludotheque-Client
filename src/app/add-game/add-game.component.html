@@ -21,13 +21,8 @@
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="theme" class="p-col-fixed" style="width:100px">Theme</label>
-    <div class="p-col">
-      <input id="theme" type="text" pInputText formControlName="theme">
-      <div *ngIf="theme.invalid && (theme.dirty || theme.touched)" class="ng-dirty ng-invalid">
-        <div *ngIf="theme?.errors.required">Le pseudo est obligatoire</div>
-      </div>
-    </div>
+    <p-dropdown [options]="themes" placeholder="Selectionnez un thème" optionLabel="theme"
+                [showClear]="true"></p-dropdown>
   </div>
   <div class="p-field p-grid">
     <p-dropdown [options]="editeurs" placeholder="Selectionnez un éditeur" optionLabel="editeur"
@@ -86,24 +81,22 @@
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="poid" class="p-col-fixed" style="width:100px">Age minimum</label>
+    <label for="poid" class="p-col-fixed" style="width:100px">Poid</label>
     <div class="p-col">
-      <input id="poid" type="number" pInputText formControlName="duree">
+      <input id="poid" type="number" pInputText formControlName="poid">
       <div *ngIf="poid.invalid && (poid.dirty || poid.touched)" class="ng-dirty ng-invalid">
         <div *ngIf="poid?.errors.required">Le poid est obligatoire</div>
-        <div *ngIf="poid?.errors.min">Le poid doit être de 0.100 an minimum</div>
+        <div *ngIf="poid?.errors.min">Le poid doit être de 0.100 minimum</div>
         <div *ngIf="poid?.errors.max">Le poid doit être de 5.00 maximum</div>
       </div>
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="duree" class="p-col-fixed" style="width:100px">Age minimum</label>
+    <label for="duree" class="p-col-fixed" style="width:100px">Durée</label>
     <div class="p-col">
       <input id="duree" type="number" pInputText formControlName="duree">
       <div *ngIf="duree.invalid && (duree.dirty || duree.touched)" class="ng-dirty ng-invalid">
-        <div *ngIf="duree.errors.required">Le poid est obligatoire</div>
-        <div *ngIf="duree?.errors.min">Le poid doit être de 0.100 an minimum</div>
-        <div *ngIf="duree?.errors.max">Le poid doit être de 5.00 maximum</div>
+        <div *ngIf="duree.errors.required">La durée est obligatoire</div>
       </div>
     </div>
   </div>

@@ -24,6 +24,7 @@ import {ButtonModule} from 'primeng/button';
 import { GamesListComponent } from './games-list/games-list.component';
 import {CardModule} from 'primeng/card';
 import { AddGameComponent } from './add-game/add-game.component';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 import { FormRegisterComponent } from './form-register/form-register.component';
@@ -54,7 +55,8 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     MenubarModule,
     ButtonModule,
-    CardModule
+    CardModule,
+    DropdownModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
