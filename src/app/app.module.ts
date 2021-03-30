@@ -20,10 +20,14 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
+
 import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
 import { GamesListComponent } from './games-list/games-list.component';
 import {CardModule} from 'primeng/card';
+
+import { FormRegisterComponent } from './form-register/form-register.component';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -33,7 +37,11 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-    GamesListComponent
+
+    GamesListComponent,
+
+    FormRegisterComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@
   <button pButton label="Profile" icon="pi pi-fw pi-user" *ngIf="authService.isLoggedIn$ | async" (click)="redirect('/profile')"></button>
   <button pButton label="Logout" icon="pi pi-sign-out" *ngIf="authService.isLoggedIn$ | async" (click)="logout()"></button>
   <button pButton label="Exo RO" icon="pi pi-fw pi-pencil" (click)="redirect('/ro')"></button>
+  <button pButton label="Formulaire register" icon="pi pi-fw pi-pencil" (click)="redirect('/formuser')"></button>
 </p-menubar>
 
 <p-toast position="top-right" key="main"></p-toast>
