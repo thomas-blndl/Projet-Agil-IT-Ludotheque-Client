@@ -4,6 +4,7 @@ import {UserInfo} from '../_models/user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {catchError, map} from 'rxjs/operators';
+import {User} from '../_models/user';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -13,6 +14,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
+
+  private readonly apiUrl = 'http://localhost:8000/auth';
 
   constructor(private http: HttpClient) {
   }

@@ -1,7 +1,6 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import localeFr from '@angular/common/locales/fr';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -27,6 +26,9 @@ import {CardModule} from 'primeng/card';
 import { AddGameComponent } from './add-game/add-game.component';
 
 
+import { FormRegisterComponent } from './form-register/form-register.component';
+
+
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -36,7 +38,9 @@ registerLocaleData(localeFr, 'fr');
     ProfileComponent,
     LpSolverTestComponent,
     GamesListComponent,
-    AddGameComponent
+    AddGameComponent,
+    GamesListComponent,
+    FormRegisterComponent
   ],
   imports: [
     BrowserModule,
