@@ -10,7 +10,6 @@ declare var solver: any;
 })
 export class LpSolverTestComponent implements OnInit {
 
-
   readonly probleme = {
     variables: {
       s1: {
@@ -79,6 +78,7 @@ export class LpSolverTestComponent implements OnInit {
   }
 
   resolutionSacADos(): void {
+    console.log(this.sacAdoc);
     const resultat = solver.Solve(this.sacAdoc);
     console.log(resultat);
     const nbO1 = resultat.o1;

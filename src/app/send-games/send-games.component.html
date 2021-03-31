@@ -1,3 +1,17 @@
+<form [formGroup]="formulaire">
+  <div class="p-field p-grid">
+    <label for="poidsMax" class="p-col-fixed" style="width:100px">Poids maximum</label>
+    <div class="p-col">
+      <input id="poidsMax" type="number" pInputText formControlName="poidsMax">
+      <div *ngIf="poidsMax.invalid && (poidsMax.dirty || poidsMax.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="poidsMax?.errors.required">Le poids maximum est obligatoire</div>
+      </div>
+    </div>
+  </div>
+</form>
+<p-button label="resolution" (onClick)="updateProbleme()"></p-button>
+
+
 <p-table [value]="games">
   <ng-template pTemplate="header">
     <tr>
@@ -20,8 +34,9 @@
       <td>{{g.jeu.langue}}</td>
       <td>{{g.jeu.poids}}</td>
       <td>{{g.jeu.editeur_id.nom}}</td>
-      <td><p-checkbox [(ngModel)]="isChecked" [binary]="true" value="checked" (onChange)="addGame(g)"></p-checkbox></td>
+      <td><p-checkbox value="{{g.jeu.id}}" [(ngModel)]="selectedGames" inputId="{{g.jeu.id}}" (onChange)="addGame(g.jeu)"></p-checkbox></td>
     </tr>
   </ng-template>
+
 </p-table>
 
