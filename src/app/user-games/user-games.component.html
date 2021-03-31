@@ -1,0 +1,15 @@
+<h2>Liste de vos jeux</h2>
+<p-card *ngFor="let g of (games$ | async)" header="{{g.jeu.nom}}" subheader="{{g.jeu.theme_id.nom}}">
+  <ng-template pTemplate="header">
+    <img alt="image {{g.jeu.nom}}" src="{{g.jeu.url_media}}">
+  </ng-template>
+  <ng-template pTemplate="body">
+    <p>
+      Durée : {{g.jeu.duree}}
+      <br>
+      Nombre de joueurs : {{g.jeu.nombre_joueurs}}
+      <br>
+      Âge minimum des joueurs : {{g.jeu.age}}
+    </p>
+  </ng-template>
+</p-card>

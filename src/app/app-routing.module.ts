@@ -7,6 +7,7 @@ import {GamesListComponent} from './games-list/games-list.component';
 import {AddGameComponent} from './add-game/add-game.component';
 import {FormRegisterComponent} from './form-register/form-register.component';
 import {GameDetailComponent} from './game-detail/game-detail.component';
+import {UserGamesComponent} from './user-games/user-games.component';
 
 const routes: Routes = [
   {path: '', component: GamesListComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'ro', component: LpSolverTestComponent},
   {path: 'addgame', component: AddGameComponent},
   {path: 'formuser', component: FormRegisterComponent},
+  {path: 'profile/games', component: UserGamesComponent},
 ];
 
 @NgModule({
