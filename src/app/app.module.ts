@@ -32,6 +32,7 @@ import { UserGamesComponent } from './user-games/user-games.component';
 
 import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
+import { CommentComponent } from './comment/comment.component';
 
 
 
@@ -48,7 +49,8 @@ registerLocaleData(localeFr, 'fr');
     FormRegisterComponent,
     GamesListComponent,
     GameDetailComponent,
-    UserGamesComponent
+    UserGamesComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
