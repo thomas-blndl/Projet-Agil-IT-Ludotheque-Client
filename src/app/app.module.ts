@@ -33,8 +33,6 @@ import { UserGamesComponent } from './user-games/user-games.component';
 import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 
-
-
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({

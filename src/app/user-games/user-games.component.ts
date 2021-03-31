@@ -45,4 +45,9 @@ export class UserGamesComponent implements OnInit {
       );
   }
 
+  suppGame(gameId: number): void {
+    this.http.post<any>(`${environment.apiUrl}/users/${this.id}/achat`, {
+      jeu_id: gameId,
+    }, httpOptions);
+  }
 }
