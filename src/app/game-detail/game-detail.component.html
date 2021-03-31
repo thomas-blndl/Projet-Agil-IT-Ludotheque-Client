@@ -35,6 +35,20 @@
         <br>
         Édité par {{game.editeur_id.nom}}
       </p>
+<!--      <p>-->
+<!--        Commentaires :-->
+<!--      </p>-->
+<!--      <ul>-->
+<!--        <li *ngFor="let comment of game.commentaires">-->
+<!--          {{ comment.commentaire }}-->
+<!--        <br/>-->
+<!--          Note : {{comment.note}}/5-->
+<!--        <br/>-->
+<!--&lt;!&ndash;          Créé il y a {{timeFrom(comment.date_com)}} par {{comment.user.nom}}&ndash;&gt;-->
+<!--        <br/>-->
+<!--        </li>-->
+<!--      </ul>-->
+      <app-comment *ngIf="!!game" [id]="game.id"></app-comment>
     </ng-template>
     <ng-template pTemplate="footer">
       <button pButton type="button" class="p-button-raised" label="Retour à la liste des jeux" icon="pi pi-undo" [routerLink]="['/games']"></button>

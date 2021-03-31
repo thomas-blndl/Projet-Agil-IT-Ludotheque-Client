@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import * as moment from 'moment';
 import {MenuItem, MessageService} from 'primeng/api';
 import {AuthentificationService} from './_services/authentification.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
