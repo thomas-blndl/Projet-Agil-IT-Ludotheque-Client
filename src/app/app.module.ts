@@ -27,16 +27,10 @@ import {AddGameComponent} from './add-game/add-game.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {GameDetailComponent} from './game-detail/game-detail.component';
 import {FormRegisterComponent} from './form-register/form-register.component';
-
 import { UserGamesComponent } from './user-games/user-games.component';
-
 import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
-
-import { FormRegisterComponent } from './form-register/form-register.component';
 import { CommentComponent } from './comment/comment.component';
-import {DialogModule} from 'primeng/dialog';
-
 
 registerLocaleData(localeFr, 'fr');
 
@@ -51,7 +45,8 @@ registerLocaleData(localeFr, 'fr');
     FormRegisterComponent,
     GamesListComponent,
     GameDetailComponent,
-    UserGamesComponent
+    UserGamesComponent,
+    UserGamesComponent,
     CommentComponent
   ],
   imports: [

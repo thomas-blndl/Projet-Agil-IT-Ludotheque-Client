@@ -24,8 +24,8 @@ export class GameDetailComponent implements OnInit {
     });
   }
 
-  /*timeFrom(myDate: Date): string {
+  timeFrom(myDate: Date): string {
     this.dateS = moment(myDate).fromNow();
     return this.dateS;
-  }*/
+  }
 }
