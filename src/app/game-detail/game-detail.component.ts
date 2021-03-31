@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {GamesService} from '../_services/games.service';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-game-detail',
@@ -10,7 +12,7 @@ import {GamesService} from '../_services/games.service';
 export class GameDetailComponent implements OnInit {
 
   game;
-
+  dateS: string;
   constructor(private route: ActivatedRoute, private gamesService: GamesService) { }
 
   ngOnInit(): void {
@@ -21,6 +23,11 @@ export class GameDetailComponent implements OnInit {
       /*div.innerHTML = this.game.regles;
       this.game.regles = div.innerText;*/
     });
+  }
+
+  timeFrom(myDate: Date): string {
+    this.dateS = moment(myDate).fromNow();
+    return this.dateS;
   }
 
 }
