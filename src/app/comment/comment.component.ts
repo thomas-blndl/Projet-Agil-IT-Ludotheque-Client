@@ -4,6 +4,7 @@ import {AuthentificationService} from '../_services/authentification.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
+import {GameDetailComponent} from '../game-detail/game-detail.component';
 
 @Component({
   selector: 'app-comment',
@@ -19,10 +20,10 @@ export class CommentComponent implements OnInit {
   formulaireComment = new FormGroup({
     avis: new FormControl('', [Validators.required]),
     note: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5), Validators.pattern('[0-9]')]),
-    });
+  });
 
   constructor(private messageService: MessageService, public authService: AuthentificationService, private router: Router,
-              private http: HttpClient) { }
+              private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -40,6 +41,7 @@ export class CommentComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.displayModal = false;
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
@@ -50,9 +52,17 @@ export class CommentComponent implements OnInit {
       commentaire: this.avis.value,
       date_com: this.currDate,
       jeu_id: this.id,
-      note: this.note.value,
+      note: this.note.value
     }, httpOptions).subscribe((rep) => {
-      if (rep.data.value === 'User successfully registered') { this.router.navigate(['']); }
+      if (rep.success === true) {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Commentaire ajouté',
+          detail: `Votre commentaire a bien été ajouté !`,
+          key: 'main'
+        });
+        this.router.navigate([`/games/${this.id}`]);
+      }
     });
   }
 }

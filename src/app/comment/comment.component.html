@@ -1,10 +1,10 @@
-<button pButton label="Créer un commentaire" *ngIf="authService.isLoggedIn$ | async" (click)="showModalDialog()"></button>
+<button pButton label="Laisser un commentaire" icon="pi pi-pencil" *ngIf="authService.isLoggedIn$ | async" (click)="showModalDialog()"></button>
 
-<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+<p-dialog header="Laissez un commentaire" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
           [draggable]="false" [resizable]="false">
   <form [formGroup]="formulaireComment" (ngSubmit)="onSubmit()">
     <div class="p-field p-grid">
-      <label for="avis" class="p-col-fixed" style="width:100px">avis</label>
+      <label for="avis" class="p-col-fixed" style="width:100px">Votre avis :</label>
       <div class="p-col">
         <textarea rows="3" cols="30" id="avis" type="text" pInputTextarea
                   formControlName="avis"></textarea>
@@ -15,19 +15,19 @@
     </div>
 
     <div class="p-field p-grid">
-      <label for="note" class="p-col-fixed" style="width:100px">note</label>
+      <label for="note" class="p-col-fixed" style="width:100px">Note (entre 1 et 5) :</label>
       <div class="p-col">
         <input id="note" type="text" pInputText formControlName="note">
         <div *ngIf="note.invalid && (note.dirty || note.touched)" class="ng-dirty ng-invalid">
           <div *ngIf="note?.errors.required">La note est obligatoire</div>
-          <div *ngIf="note?.errors.min">La note doit être supérieur ou égale à 1</div>
-          <div *ngIf="note?.errors.max">Le note doit être inférieur ou égale à 5</div>
-          <div *ngIf="note?.errors.pattern">Le note doit être un chiffre compris entre 1 et 5</div>
+          <div *ngIf="note?.errors.min">La note doit être supérieure ou égale à 1</div>
+          <div *ngIf="note?.errors.max">La note doit être inférieure ou égale à 5</div>
+          <div *ngIf="note?.errors.pattern">La note doit être un chiffre compris entre 1 et 5</div>
         </div>
       </div>
     </div>
   </form>
   <ng-template pTemplate="footer">
-    <button [disabled]="!formulaireComment.valid" (click)="onSubmit()">Ajouter le commentaire</button>
+    <button [disabled]="!formulaireComment.valid" (click)="onSubmit()">Laisser le commentaire</button>
   </ng-template>
 </p-dialog>
