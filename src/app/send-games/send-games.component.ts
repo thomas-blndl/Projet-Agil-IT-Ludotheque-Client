@@ -16,6 +16,8 @@ export class SendGamesComponent implements OnInit {
   games$: Observable<any[]>;
   games: any[] = [];
   id: number;
+  isChecked: boolean;
+  selectedGames: string[] = [];
 
   constructor(private gameService: GamesService, private http: HttpClient, private route: ActivatedRoute) {
   }
@@ -41,4 +43,19 @@ export class SendGamesComponent implements OnInit {
   }
 
 
+  addGame(g: any): void {
+    console.log(this.isChecked);
+    if (this.isChecked){
+      this.selectedGames.push(g);
+      console.log( 'j\'ai ajouté ', g.jeu.nom);
+    }
+    else {
+      this.selectedGames.forEach(game => {
+        if (game === g){
+          this.selectedGames.splice(this.selectedGames.indexOf(game), 1);
+        }
+      });
+    }
+    console.log('les jeux selec : ', this.selectedGames);
+  }
 }

@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthentificationService} from './_services/authentification.service';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
@@ -35,6 +35,7 @@ import {CalendarModule} from 'primeng/calendar';
 import { CommentComponent } from './comment/comment.component';
 import { SendGamesComponent } from './send-games/send-games.component';
 import {TableModule} from 'primeng/table';
+import {CheckboxModule} from "primeng/checkbox";
 
 
 
@@ -71,7 +72,9 @@ registerLocaleData(localeFr, 'fr');
     DropdownModule,
     DialogModule,
     CalendarModule,
-    TableModule
+    TableModule,
+    CheckboxModule,
+    FormsModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
