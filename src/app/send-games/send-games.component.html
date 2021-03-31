@@ -8,6 +8,7 @@
       <th>Langue</th>
       <th>Poids</th>
       <th>Editeur</th>
+      <th>Selectionner</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-game>
@@ -19,6 +20,7 @@
       <td>{{g.jeu.langue}}</td>
       <td>{{g.jeu.poids}}</td>
       <td>{{g.jeu.editeur_id.nom}}</td>
+      <td><p-checkbox [(ngModel)]="isChecked" [binary]="true" value="checked" (onChange)="addGame(g)"></p-checkbox></td>
     </tr>
   </ng-template>
 </p-table>
