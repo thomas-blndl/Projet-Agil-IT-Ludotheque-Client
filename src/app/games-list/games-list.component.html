@@ -1,5 +1,14 @@
 <div>
   <h2>Liste des jeux</h2>
+  <button pButton type="button" class="p-button-raised" label="Ajouter un jeu" icon="pi pi-plus" [routerLink]="['/addgame']"></button>
+  <br>
+  <br>
+  <form (submit)="filterPlayerNb(nbJ)">
+    <label for="nbJoueurs">Filtrer par nombre de joueurs : </label>
+    <input id="nbJoueurs" type="number" #nbJ>
+    <input type="submit" value="Filtrer">
+  </form>
+  <br>
   <p-card *ngFor="let g of (games$ | async)" header="{{g.nom}}" subheader="{{g.theme_id.nom}}">
     <ng-template pTemplate="header">
       <img alt="image {{g.nom}}" src="{{g.url_media}}">

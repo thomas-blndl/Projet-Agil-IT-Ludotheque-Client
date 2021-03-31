@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
+import {from, noop, Observable, of, throwError} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {catchError, find, map} from 'rxjs/operators';
-import {Jeu} from '../_models/jeu';
+import {catchError, filter, finalize, find, map, take, tap} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -26,6 +25,14 @@ export class GamesService {
 
   getGameById(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/jeux/${id}`, httpOptions)
+      .pipe(
+        map(g => g.data.item),
+        catchError(err => throwError(err))
+      );
+  }
+
+  filterByPlayers(nb: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/jeux?nbJoueurs=${nb}`, httpOptions)
       .pipe(
         map(g => g.data.item),
         catchError(err => throwError(err))
