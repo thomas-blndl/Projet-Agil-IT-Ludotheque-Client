@@ -3,6 +3,12 @@
   <button pButton type="button" class="p-button-raised" label="Ajouter un jeu" icon="pi pi-plus" [routerLink]="['/addgame']"></button>
   <br>
   <br>
+  <button pButton type="button" class="p-button-raised" label="Trier les jeux par nom" icon="pi pi-sort-alpha-down" (click)="sortNames()"></button>
+  <br>
+  <br>
+  <button pButton type="button" class="p-button-raised" label="Trier les jeux par note" icon="pi pi-sort-alpha-down" (click)="sortNotes()"></button>
+  <br>
+  <br>
   <form (submit)="filterPlayerNb(nbJ)">
     <label for="nbJoueurs">Filtrer par nombre de joueurs : </label>
     <input id="nbJoueurs" type="number" #nbJ>

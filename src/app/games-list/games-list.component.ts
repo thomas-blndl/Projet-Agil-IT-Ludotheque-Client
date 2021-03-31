@@ -30,4 +30,14 @@ export class GamesListComponent implements OnInit {
     }
     return false;
   }
+
+  sortNames(): boolean{
+    this.games$ = this.gamesService.sortByName();
+    return false;
+  }
+
+  sortNotes(): boolean{
+    this.games$ = this.gamesService.sortByNote();
+    return false;
+  }
 }

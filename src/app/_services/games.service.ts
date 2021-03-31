@@ -38,4 +38,20 @@ export class GamesService {
         catchError(err => throwError(err))
       );
   }
+
+  sortByName(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/jeux?sort=nom`, httpOptions)
+      .pipe(
+        map(g => g.data.item),
+        catchError(err => throwError(err))
+      );
+  }
+
+  sortByNote(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/jeux?sort=note`, httpOptions)
+      .pipe(
+        map(g => g.data.item),
+        catchError(err => throwError(err))
+      );
+  }
 }
