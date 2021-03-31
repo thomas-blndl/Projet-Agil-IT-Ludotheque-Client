@@ -33,6 +33,8 @@ import { UserGamesComponent } from './user-games/user-games.component';
 import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 import { CommentComponent } from './comment/comment.component';
+import { SendGamesComponent } from './send-games/send-games.component';
+import {TableModule} from 'primeng/table';
 
 
 
@@ -50,7 +52,8 @@ registerLocaleData(localeFr, 'fr');
     GamesListComponent,
     GameDetailComponent,
     UserGamesComponent,
-    CommentComponent
+    CommentComponent,
+    SendGamesComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ registerLocaleData(localeFr, 'fr');
     CardModule,
     DropdownModule,
     DialogModule,
-    CalendarModule
+    CalendarModule,
+    TableModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
