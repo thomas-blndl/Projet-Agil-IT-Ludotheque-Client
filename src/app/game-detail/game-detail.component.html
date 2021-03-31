@@ -1,3 +1,37 @@
 <div>
   <h2>Détails du jeu {{game.nom}}</h2>
+  <p-card header="{{game.nom}}" subheader="{{game.theme_id.nom}}">
+    <ng-template pTemplate="header">
+      <img alt="image {{game.nom}}" src="{{game.url_media}}">
+    </ng-template>
+    <p>
+      {{game.description}}
+    </p>
+    <p>
+      Règles :
+      <br>
+      {{game.regles}}
+    </p>
+    <ng-template pTemplate="body">
+      <p>
+        Catégorie : {{game.categorie}}
+        <br>
+        Langue : {{game.langue}}
+        <br>
+        Poids : {{game.poids}}
+        <br>
+        Durée : {{game.duree}}
+        <br>
+        Nombre de joueurs : {{game.nombre_joueurs}}
+        <br>
+        Âge minimum des joueurs : {{game.age}}
+        <br>
+        <br>
+        Édité par {{game.editeur_id.nom}}
+      </p>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <button pButton type="button" class="p-button-raised" label="Retour à la liste des jeux" icon="pi pi-undo" [routerLink]="['/games']"></button>
+    </ng-template>
+  </p-card>
 </div>

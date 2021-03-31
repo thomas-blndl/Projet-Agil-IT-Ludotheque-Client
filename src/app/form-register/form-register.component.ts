@@ -14,9 +14,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class FormRegisterComponent implements OnInit {
 
-  newUser: User;
-
-
   formulaire = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     prenom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
@@ -48,12 +45,12 @@ export class FormRegisterComponent implements OnInit {
     return this.formulaire.get('mail');
   }
 
-  get mdp1(): AbstractControl {
+  get mdp1(): AbstractControl{
     return this.formulaire.get('mdp1');
   }
 
-  get mdp2(): AbstractControl {
-    return this.formulaire.get('mdp2');
+  get mdp2(): AbstractControl{
+    return this.formulaire.get('mdp1');
   }
 
   checkPasswords(): boolean {
