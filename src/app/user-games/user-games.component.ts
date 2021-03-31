@@ -4,10 +4,18 @@ import {GamesService} from "../_services/games.service";
 import {UserInfo} from "../_models/user-info";
 import {environment} from "../../environments/environment";
 import {catchError, map, switchMap} from "rxjs/operators";
-import {HttpClient} from '@angular/common/http';
-import {httpOptions} from "../_services/authentification.service";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+// import {httpOptions} from "../_services/authentification.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {UserService} from "../_services/user.service";
+import {MessageService} from 'primeng/api';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json'
+  })
+};
 
 @Component({
   selector: 'app-user-games',
@@ -23,7 +31,7 @@ export class UserGamesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nom', 'description', 'regles', 'langue', 'url_media', 'age', 'poids', 'nombre_joueurs', 'categorie', 'duree', 'theme', 'editeur'];
   @Input() id: number;
 
-  constructor(private gameService: GamesService, private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private messageService: MessageService, private gameService: GamesService, private http: HttpClient, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -45,9 +53,26 @@ export class UserGamesComponent implements OnInit {
       );
   }
 
-  suppGame(gameId: number): void {
-    this.http.post<any>(`${environment.apiUrl}/users/${this.id}/achat`, {
-      jeu_id: gameId,
-    }, httpOptions);
+  suppGame(gameId: number, l, p, d): void {
+    console.log(gameId);
+    console.log(l);
+    console.log(p);
+    console.log(d);
+    this.http.post<any>(`${environment.apiUrl}/users/${this.id}/vente`, {
+      lieu: l,
+      prix: p,
+      date_achat: d,
+      jeu_id:  gameId
+    }, httpOptions).subscribe((rep) => {
+      if (rep.success === true) {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Jeu supprimé',
+          detail: `Le jeu a bien été supprimé !`,
+          key: 'main'
+        });
+        this.router.navigate(['/profile']);
+      }
+    });
   }
 }
