@@ -36,8 +36,6 @@ import { CommentComponent } from './comment/comment.component';
 import { SendGamesComponent } from './send-games/send-games.component';
 import {TableModule} from 'primeng/table';
 
-
-
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
