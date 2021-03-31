@@ -49,6 +49,7 @@ registerLocaleData(localeFr, 'fr');
     GamesListComponent,
     GameDetailComponent,
     UserGamesComponent,
+    CommentComponent,
     SendGamesComponent
   ],
   imports: [
@@ -70,7 +71,7 @@ registerLocaleData(localeFr, 'fr');
     DialogModule,
     TableModule,
     CheckboxModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
