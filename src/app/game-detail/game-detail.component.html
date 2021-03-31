@@ -2,7 +2,7 @@
   <h2>Détails du jeu {{game.nom}}</h2>
   <p-card header="{{game.nom}}" subheader="{{game.theme_id.nom}}">
     <ng-template pTemplate="header">
-      <img alt="image {{game.nom}}" src="{{game.url_media}}">
+      <img alt="image {{game.nom}}" src="{{game.url_media}} " style="width: 300px;height: 300px">
     </ng-template>
     <p>
       {{game.description}}
@@ -48,9 +48,30 @@
           <br/>
         </li>
       </ul>
-      <app-comment *ngIf="!!game" [id]="game.id"></app-comment>
+      <app-comment [id]="game.id"></app-comment>
     </ng-template>
     <ng-template pTemplate="footer">
+      <p-button class="p-button-raised" label="Statistiques" icon="pi pi-chart-bar" (click)="displayStats()"></p-button>
+      <p-dialog header="Statistiques du jeu {{game.nom}}" [(visible)]="displaySta" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+                [draggable]="false" [resizable]="false">
+        <div>
+          <p>
+            Note moyenne : {{game.statistiques.noteMoyenne}}
+            <br>
+            Note maximale : {{game.statistiques.noteMax}}
+            <br>
+            Note minimale : {{game.statistiques.noteMin}}
+            <br>
+            Nombre de commentaires sur ce jeu : {{game.statistiques.nbCommentaires}}
+            <br>
+            Nombre total de commentaires : {{game.statistiques.nbCommentairesTotal}}
+            <br>
+            Classement du jeu dans son thème : {{game.statistiques.rang}}ème sur {{game.statistiques.nbJeuxTheme}}
+          </p>
+        </div>
+      </p-dialog>
+      <br>
+      <br>
       <button pButton type="button" class="p-button-raised" label="Retour à la liste des jeux" icon="pi pi-undo"
               [routerLink]="['/games']"></button>
     </ng-template>

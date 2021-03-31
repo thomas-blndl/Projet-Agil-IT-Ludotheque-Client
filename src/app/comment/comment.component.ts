@@ -13,7 +13,7 @@ import {HttpHeaders, HttpClient} from '@angular/common/http';
 export class CommentComponent implements OnInit {
 
   currDate = new Date();
-  displayModal: boolean;
+  displayModal: boolean = false;
   @Input() id: number;
 
   formulaireComment = new FormGroup({

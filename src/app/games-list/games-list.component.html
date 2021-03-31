@@ -23,7 +23,7 @@
   <br>
   <p-card *ngFor="let g of (games$ | async)" header="{{g.nom}}" subheader="{{g.theme_id.nom}}">
     <ng-template pTemplate="header">
-      <img alt="image {{g.nom}}" src="{{g.url_media}}">
+      <img alt="image {{g.nom}}" src="{{g.url_media}}" style="width: 300px;height: 300px">
     </ng-template>
     <ng-template pTemplate="body">
       <p>

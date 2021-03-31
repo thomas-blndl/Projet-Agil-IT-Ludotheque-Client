@@ -12,6 +12,8 @@ export class GameDetailComponent implements OnInit {
 
   game;
   dateS: string;
+  displaySta = false;
+
   constructor(private route: ActivatedRoute, private gamesService: GamesService) { }
 
   ngOnInit(): void {
@@ -27,5 +29,9 @@ export class GameDetailComponent implements OnInit {
   timeFrom(myDate: Date): string {
     this.dateS = moment(myDate).fromNow();
     return this.dateS;
+  }
+
+  displayStats(): void {
+    this.displaySta = true;
   }
 }
