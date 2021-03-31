@@ -13,6 +13,8 @@ export class GameDetailComponent implements OnInit {
 
   game;
   dateS: string;
+  displaySta: boolean = false;
+
   constructor(private route: ActivatedRoute, private gamesService: GamesService) { }
 
   ngOnInit(): void {
@@ -30,4 +32,7 @@ export class GameDetailComponent implements OnInit {
     return this.dateS;
   }
 
+  displayStats(): void {
+    this.displaySta = true;
+  }
 }

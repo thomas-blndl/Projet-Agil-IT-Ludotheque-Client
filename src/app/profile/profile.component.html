@@ -10,7 +10,7 @@
   <p>Modifié : {{user.updated_at | amDateFormat:'LL'}} </p>
 
   <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Ajouter un jeu"></p-button>
-  <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+  <p-dialog header="Ajoutez un jeu à votre collection" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
             [draggable]="false" [resizable]="false">
     <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
       <div style="display: inline; margin-right: 10px; ">Choisissez un jeu</div>
