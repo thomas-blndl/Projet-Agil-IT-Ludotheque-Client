@@ -51,4 +51,54 @@
       <p-button icon="pi pi-check" (click)="onSubmit()" label="Ajouter" styleClass="p-button-text"></p-button>
     </ng-template>
   </p-dialog>
+
+  <p-button (click)="showModalDialog2()" icon="pi pi-external-link" label="Editer mon profil"></p-button>
+  <p-dialog header="Editer mon profil" [(visible)]="displayModal2" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+    <form [formGroup]="editProf" (ngSubmit)="onEdit()">
+      <div class="p-field p-grid">
+        <label for="nom" class="p-col-fixed" style="width:100px">Nom</label>
+        <div class="p-col">
+          <input alt="" id="nom" type="text" pInputText formControlName="nom">
+          <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="ng-dirty ng-invalid">
+            <div *ngIf="nom?.errors.required">Le nom d'achat est obligatoire</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label for="prenom" class="p-col-fixed" style="width:100px">Prenom</label>
+        <div class="p-col">
+          <input alt="" id="prenom" type="text" pInputText formControlName="prenom">
+          <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="ng-dirty ng-invalid">
+            <div *ngIf="prenom?.errors.required">Le prenom d'achat est obligatoire</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label for="pseudo" class="p-col-fixed" style="width:100px">Pseudo</label>
+        <div class="p-col">
+          <input alt="" id="pseudo" type="text" pInputText formControlName="pseudo">
+          <div *ngIf="pseudo.invalid && (pseudo.dirty || pseudo.touched)" class="ng-dirty ng-invalid">
+            <div *ngIf="pseudo?.errors.required">Le pseudo d'achat est obligatoire</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label for="mail" class="p-col-fixed" style="width:100px">Mail</label>
+        <div class="p-col">
+          <input alt=""  id="mail" type="text" pInputText formControlName="mail">
+          <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="ng-dirty ng-invalid">
+            <div *ngIf="mail?.errors.required">Le mail d'achat est obligatoire</div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="onEdit()" label="Ajouter" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
 </div>

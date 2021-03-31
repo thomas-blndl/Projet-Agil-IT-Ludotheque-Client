@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit {
   }
 
   displayModal: boolean;
+  displayModal2: boolean;
   date: Date;
   boolDate: boolean;
 
@@ -44,6 +45,13 @@ export class ProfileComponent implements OnInit {
     jeu: new FormControl('', [Validators.required]),
     date: new FormControl('', [Validators.required]),
     prix: new FormControl('', [Validators.required])
+  });
+
+  editProf = new FormGroup({
+    nom: new FormControl('', [Validators.required]),
+    prenom: new FormControl('', [Validators.required]),
+    pseudo: new FormControl('', [Validators.required]),
+    mail: new FormControl('', [Validators.required])
   });
 
   get lieu(): AbstractControl {
@@ -58,8 +66,28 @@ export class ProfileComponent implements OnInit {
     return this.formulaire.get('prix');
   }
 
+  get nom(): AbstractControl {
+    return this.editProf.get('nom');
+  }
+
+  get prenom(): AbstractControl {
+    return this.editProf.get('prenom');
+  }
+
+  get pseudo(): AbstractControl {
+    return this.editProf.get('pseudo');
+  }
+
+  get mail(): AbstractControl {
+    return this.editProf.get('mail');
+  }
+
   showModalDialog(): void {
     this.displayModal = true;
+  }
+
+  showModalDialog2(): void {
+    this.displayModal2 = true;
   }
 
   onSelectMethod(event): void {
@@ -121,6 +149,26 @@ export class ProfileComponent implements OnInit {
       jeu_id: 1,
     }, httpOptions).subscribe((rep) => {
       if (rep.data.value === 'Game successfully added') {
+        this.router.navigate(['']);
+      }
+    });
+  }
+
+  onEdit(): void{
+    this.displayModal2 = false;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      })
+    };
+    this.http.put<any>(`http://localhost:8000/api/users/` + this.user.id, {
+      nom: this.nom.value,
+      prenom: this.prenom.value,
+      pseudo: this.pseudo.value,
+      email: this.mail.value,
+    }, httpOptions).subscribe((rep) => {
+      if (rep.data.value === 'User successfully edited') {
         this.router.navigate(['']);
       }
     });
