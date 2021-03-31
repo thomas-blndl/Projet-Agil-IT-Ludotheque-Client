@@ -13,6 +13,12 @@
       {{game.regles}}
     </p>
     <ng-template pTemplate="body">
+      Mécaniques :
+      <ul>
+        <li *ngFor="let meca of game.mecaniques">
+          {{meca.nom}}
+        </li>
+      </ul>
       <p>
         Catégorie : {{game.categorie}}
         <br>
