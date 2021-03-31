@@ -15,6 +15,12 @@
     <input type="submit" value="Filtrer">
   </form>
   <br>
+  <form (submit)="filterAge(age)">
+    <label for="age">Filtrer selon l'âge minimum : </label>
+    <input id="age" type="number" #age>
+    <input type="submit" value="Filtrer">
+  </form>
+  <br>
   <p-card *ngFor="let g of (games$ | async)" header="{{g.nom}}" subheader="{{g.theme_id.nom}}">
     <ng-template pTemplate="header">
       <img alt="image {{g.nom}}" src="{{g.url_media}}">

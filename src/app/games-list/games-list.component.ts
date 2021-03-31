@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
 import {GamesService} from '../_services/games.service';
 import {Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-games-list',
@@ -13,12 +13,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class GamesListComponent implements OnInit {
   games$: Observable<any[]>;
 
-  @ViewChild('nbJ') nbJ: ElementRef;
-  formulaire = new FormGroup({
-    nbJ: new FormControl('')
-  });
-
-  constructor(private gamesService: GamesService, private router: Router) { }
+  constructor(private gamesService: GamesService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.games$ = this.gamesService.list();
@@ -27,6 +22,13 @@ export class GamesListComponent implements OnInit {
   filterPlayerNb(nbJ: HTMLInputElement): boolean {
     if (nbJ.value.trim() !== '') {
       this.games$ = this.gamesService.filterByPlayers(nbJ.value.trim());
+    }
+    return false;
+  }
+
+  filterAge(age: HTMLInputElement): boolean {
+    if (age.value.trim() !== '') {
+      this.games$ = this.gamesService.filterByAge(age.value.trim());
     }
     return false;
   }

@@ -39,6 +39,14 @@ export class GamesService {
       );
   }
 
+  filterByAge(age: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/jeux?age=${age}`, httpOptions)
+      .pipe(
+        map(g => g.data.item),
+        catchError(err => throwError(err))
+      );
+  }
+
   sortByName(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/jeux?sort=nom`, httpOptions)
       .pipe(
