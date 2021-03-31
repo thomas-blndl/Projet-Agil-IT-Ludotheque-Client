@@ -12,4 +12,7 @@
       Âge minimum des joueurs : {{g.jeu.age}}
     </p>
   </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton type="button" class="p-button-raised p-button-danger" label="Supprimer" icon="pi pi-trash" (click)="suppGame(g.jeu.id, g.lieu, g.prix, g.date_achat)"></button>
+  </ng-template>
 </p-card>
