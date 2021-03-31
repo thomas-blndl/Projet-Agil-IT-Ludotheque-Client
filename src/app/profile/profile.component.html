@@ -6,4 +6,47 @@
 
   <p>Crée : {{user.created_at | amDateFormat:'LL'}} </p>
   <p>Modifié : {{user.updated_at | amDateFormat:'LL'}} </p>
+
+  <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Ajouter un jeu"></p-button>
+  <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+      <div style="display: inline; margin-right: 10px; ">Choisissez un jeu</div>
+      <select name="jeu" id="jeu" formControlName="jeu">
+        <option [ngValue]="null">Choisissez un jeu</option>
+        <option *ngFor="let j of jeux" value="{{j.id}}">{{j.nom}}</option>
+      </select>
+
+      <div class="p-field p-grid">
+        <label for="lieu" class="p-col-fixed" style="width:100px">Lieu</label>
+        <div class="p-col">
+          <input id="lieu" type="text" pInputText formControlName="lieu">
+          <div *ngIf="lieu.invalid && (lieu.dirty || lieu.touched)" class="ng-dirty ng-invalid">
+            <div *ngIf="lieu?.errors.required">Le lieu d'achat est obligatoire</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label for="prix" class="p-col-fixed" style="width:100px">prix</label>
+        <div class="p-col">
+          <input id="prix" type="text" pInputText formControlName="prix">
+          <div *ngIf="prix.invalid && (prix.dirty || prix.touched)" class="ng-dirty ng-invalid">
+            <div *ngIf="prix?.errors.required">Le prix d'achat est obligatoire</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width:100px">Date</label>
+        <div class="p-col">
+          <p-calendar formControlName="date" (onSelect)="onSelectMethod($event)" [inline]="true" [showWeek]="true"></p-calendar>
+        </div>
+      </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="onSubmit()" label="Ajouter" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
 </div>
