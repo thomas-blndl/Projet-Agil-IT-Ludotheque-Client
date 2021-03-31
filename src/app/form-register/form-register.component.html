@@ -67,5 +67,15 @@
       <div *ngIf="!checkPasswords()">Les deux mots de passe doivent être les mêmes</div>
     </div>
   </div>
+
+  <div class="p-field p-grid">
+    <label for="rgpd" class="p-col-fixed" style="width:100px"><a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">Loi RGPD</a></label>
+    <div class="p-col">
+      <input id="rgpd" type="checkbox" formControlName="rgpd">
+      <div *ngIf="rgpd.invalid && (rgpd.dirty || rgpd.touched)" class="ng-dirty ng-invalid">
+        <div *ngIf="rgpd?.errors.required">Vous devez accepter la loi RGPD</div>
+      </div>
+    </div>
+  </div>
 </form>
-<button [disabled]="!formulaire.valid" (click)="onSubmit()">Valide</button>
+<button [disabled]="!formulaire.valid || !verifCheckbox()" (click)="onSubmit()">Valide</button>
