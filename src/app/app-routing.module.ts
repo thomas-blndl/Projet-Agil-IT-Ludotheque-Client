@@ -16,7 +16,6 @@ const routes: Routes = [
   {path: 'games/:id', component: GameDetailComponent},
   {path: 'ro', component: LpSolverTestComponent},
   {path: 'formuser', component: FormRegisterComponent},
-  {path: 'ro', component: LpSolverTestComponent}
 ];
 
 @NgModule({

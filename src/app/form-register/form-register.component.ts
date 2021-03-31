@@ -5,7 +5,7 @@ import {UserService} from '../_services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthentificationService, httpOptions} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-form-register',

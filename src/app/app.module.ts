@@ -23,11 +23,13 @@ import {MarkdownModule} from 'ngx-markdown';
 
 import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
-import { GamesListComponent } from './games-list/games-list.component';
+import {GamesListComponent} from './games-list/games-list.component';
 import {CardModule} from 'primeng/card';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 
 import { FormRegisterComponent } from './form-register/form-register.component';
+import { CommentComponent } from './comment/comment.component';
+import {DialogModule} from 'primeng/dialog';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -40,7 +42,8 @@ registerLocaleData(localeFr, 'fr');
     LpSolverTestComponent,
     FormRegisterComponent,
     GamesListComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     MenubarModule,
     ButtonModule,
-    CardModule
+    CardModule,
+    DialogModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
