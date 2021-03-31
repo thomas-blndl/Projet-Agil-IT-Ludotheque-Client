@@ -27,7 +27,12 @@ import {AddGameComponent} from './add-game/add-game.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {GameDetailComponent} from './game-detail/game-detail.component';
 import {FormRegisterComponent} from './form-register/form-register.component';
+
 import { UserGamesComponent } from './user-games/user-games.component';
+
+import {DialogModule} from 'primeng/dialog';
+import {CalendarModule} from 'primeng/calendar';
+
 
 
 registerLocaleData(localeFr, 'fr');
@@ -58,7 +63,9 @@ registerLocaleData(localeFr, 'fr');
     MenubarModule,
     ButtonModule,
     CardModule,
-    DropdownModule
+    DropdownModule,
+    DialogModule,
+    CalendarModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
