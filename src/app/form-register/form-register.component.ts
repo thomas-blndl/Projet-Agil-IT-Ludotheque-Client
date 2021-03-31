@@ -19,14 +19,14 @@ export class FormRegisterComponent implements OnInit {
     prenom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     pseudo: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     mail: new FormControl('', [Validators.required, Validators.email]),
-    mdp1: new FormControl('',[Validators.required, Validators.pattern('(?=^.{8,}$)((?=.*\\d))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$')]),
-    mdp2: new FormControl('',[Validators.required, Validators.pattern('(?=^.{8,}$)((?=.*\\d))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$')]),
+    mdp1: new FormControl('', [Validators.required, Validators.pattern('(?=^.{8,}$)((?=.*\\d))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$')]),
+    mdp2: new FormControl('', [Validators.required, Validators.pattern('(?=^.{8,}$)((?=.*\\d))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$')]),
+    rgpd: new FormControl('', [Validators.required]),
   });
 
   constructor(private serviceUser: UserService, private route: ActivatedRoute, private  router: Router, private http: HttpClient ) { }
 
   ngOnInit(): void {
-
   }
 
   get nom(): AbstractControl {
@@ -51,6 +51,14 @@ export class FormRegisterComponent implements OnInit {
 
   get mdp2(): AbstractControl{
     return this.formulaire.get('mdp1');
+  }
+
+  get rgpd(): AbstractControl{
+    return this.formulaire.get('rgpd');
+  }
+
+  verifCheckbox(): boolean {
+    return this.formulaire.get('rgpd').value;
   }
 
   checkPasswords(): boolean {
