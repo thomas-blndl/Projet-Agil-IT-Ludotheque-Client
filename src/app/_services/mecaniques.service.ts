@@ -19,7 +19,7 @@ export class MecaniquesService {
   getMeca(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/mecanics`, httpOptions)
       .pipe(
-        map(g => g.data.item),
+        map(g => g.data.items),
         catchError(err => throwError(err))
       );
   }

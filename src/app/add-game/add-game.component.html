@@ -19,18 +19,18 @@
       </div>
     </div>
   </div>
-  <div class="p-field p-grid">
-    <p-dropdown [options]="themes" placeholder="Selectionnez un thème"
-                [showClear]="true"></p-dropdown>
-  </div>
-  <div class="p-field p-grid">
-    <p-dropdown [options]="editeurs" placeholder="Selectionnez un éditeur"
-                [showClear]="true"></p-dropdown>
-  </div>
-  <div class="p-field p-grid">
-    <p-dropdown [options]="mecaniques" placeholder="Selectionnez une mécanique"
-                [showClear]="true"></p-dropdown>
-  </div>
+  <select name="themes" id="theme" formControlName="theme">
+    <option value="">Choisissez un theme</option>
+    <option *ngFor="let t of themes" value="{{t.id}}">{{t.nom}}</option>
+  </select>
+  <select name="editeurs" id="editeur" formControlName="editeur">
+    <option value="">Choisissez un editeur</option>
+    <option *ngFor="let e of editeurs" value="{{e.id}}">{{e.nom}}</option>
+  </select>
+  <select name="mecaniques" id="mecanique" formControlName="mecanique">
+    <option value="">Choisissez une mecanique</option>
+    <option *ngFor="let m of mecaniques" value="{{m}}">{{m}}</option>
+  </select>
   <div class="p-field p-grid">
     <label for="url_media" class="p-col-fixed" style="width:100px">Url media</label>
     <div class="p-col">
@@ -40,22 +40,24 @@
       </div>
     </div>
   </div>
-  <div class="p-field p-grid">
-    <p-dropdown [options]="categories" placeholder="Selectionnez une catégorie" [showClear]="true"></p-dropdown>
-  </div>
+  <select name="categories" id="categorie" formControlName="categorie">
+    <option value="">Choisissez une categorie</option>
+    <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
+  </select>
   <div class="p-field p-grid">
     <label for="regles" class="p-col-fixed" style="width:100px">Regles</label>
     <div class="p-col">
-      <textarea rows="3" cols="30" id="regles" type="text" pInputTextarea id="regles" type="text" formControlName="regles"></textarea>
+      <textarea rows="3" cols="30" id="regles" type="text" pInputTextarea id="regles" type="text"
+                formControlName="regles"></textarea>
       <div *ngIf="regles.invalid && (regles.dirty || regles.touched)" class="ng-dirty ng-invalid">
         <div *ngIf="regles?.errors.required">Les regles sont obligatoires</div>
       </div>
     </div>
   </div>
-  <div class="p-field p-grid">
-    <p-dropdown [options]="langues" placeholder="Selectionnez une langue"
-                [showClear]="true"></p-dropdown>
-  </div>
+  <select name="langues" id="langue" formControlName="langue">
+    <option value="">Choisissez une langue</option>
+    <option *ngFor="let l of langues" value="{{l}}">{{l}}</option>
+  </select>
   <div class="p-field p-grid">
     <label for="nbJoueurs" class="p-col-fixed" style="width:100px">Nombre de joueur</label>
     <div class="p-col">

@@ -5,8 +5,7 @@ import {Jeu} from '../_models/jeu';
 import {GamesService} from '../_services/games.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {MecaniquesService} from "../_services/mecaniques.service";
-import {map} from "rxjs/operators";
+import {MecaniquesService} from '../_services/mecaniques.service';
 
 @Component({
   selector: 'app-add-game',
@@ -17,11 +16,12 @@ export class AddGameComponent implements OnInit {
 
   games$: Observable<any[]>;
   game: Jeu;
+  games: Jeu[];
 
-  readonly categories: string[] = [];
+  readonly categories: any[] = [];
   readonly mecaniques: string[] = [];
-  readonly editeurs: string[] = [];
-  readonly themes: string[] = [];
+  readonly editeurs: any[] = [];
+  readonly themes: any[] = [];
   readonly langues: string[] = [];
 
   formulaire = new FormGroup({
@@ -30,7 +30,7 @@ export class AddGameComponent implements OnInit {
     theme: new FormControl('', [Validators.required]),
     editeur: new FormControl('', [Validators.required]),
     mecanique: new FormControl('', [Validators.required]),
-    url_media: new FormControl(''),
+    url_media: new FormControl('', []),
     categorie: new FormControl('', [Validators.required]),
     regles: new FormControl('', [Validators.required]),
     langue: new FormControl('', [Validators.required]),
@@ -40,6 +40,7 @@ export class AddGameComponent implements OnInit {
     duree: new FormControl('', [Validators.required])
 
   });
+
 
   constructor(private mecaService: MecaniquesService, private gameService: GamesService, private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -54,20 +55,17 @@ export class AddGameComponent implements OnInit {
           if (this.langues.indexOf(g.langue) === -1) {
             this.langues.push(g.langue.valueOf());
           }
-          if (this.editeurs.indexOf(g.editeur_id.nom) === -1) {
-            this.editeurs.push(g.editeur_id.nom.valueOf());
-          }
+          this.addEditeur(g.editeur_id);
           if (this.categories.indexOf(g.categorie) === -1) {
             this.categories.push(g.categorie.valueOf());
           }
-          if (this.themes.indexOf(g.theme_id.nom) === -1) {
-            this.themes.push(g.theme_id.nom.valueOf());
-          }
+          this.addTheme(g.theme_id);
         });
       }
     );
     this.mecaService.getMeca().subscribe(
       meca => {
+        console.log('le meca', meca);
         meca.forEach(m => {
             this.mecaniques.push(m.nom);
           }
@@ -124,9 +122,7 @@ export class AddGameComponent implements OnInit {
     return this.formulaire.get('regles');
   }
 
-  get langue()
-    :
-    AbstractControl {
+  get langue(): AbstractControl {
     return this.formulaire.get('langue');
   }
 
@@ -153,8 +149,38 @@ export class AddGameComponent implements OnInit {
     AbstractControl {
     return this.formulaire.get('duree');
   }
-
-
+  addEditeur(editeur: any): void {
+    const breakException = {};
+    try{
+      this.editeurs.forEach(e => {
+        if (e.id === editeur.id) {
+          throw breakException;
+        }
+      });
+    }
+    catch (e){
+      if (e === breakException){
+        return;
+      }
+    }
+    this.editeurs.push(editeur);
+  }
+  addTheme(theme: any): void {
+    const breakException = {};
+    try{
+      this.themes.forEach(t => {
+        if (t.id === theme.id) {
+          throw breakException;
+        }
+      });
+    }
+    catch (e){
+      if (e === breakException){
+        return;
+      }
+    }
+    this.themes.push(theme);
+  }
   onSubmit(): void {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -162,6 +188,7 @@ export class AddGameComponent implements OnInit {
         'Content-Type': 'application/json'
       })
     };
+
     this.http.post<any>('http://localhost:8000/api/jeux', {
       nom: this.nom.value,
       description: this.description.value,
