@@ -2,6 +2,7 @@
 <br>
 <div *ngIf="!loading">
   <button pButton label="My games" icon="pi pi-fw pi-pencil" (click)="redirect('/profile/games', user.id)"></button>
+  <button pButton label="Send games" icon="pi pi-fw pi-pencil" (click)="redirect('/profile/send', user.id)"></button>
   <h2>#{{user.id}} {{user.prenom}} {{user.nom}}</h2>
   <p>{{user.email}}</p>
 

@@ -34,7 +34,6 @@ export class UserGamesComponent implements OnInit {
         this.games.push(g);
       }
     );
-    this.games$.subscribe( console.log);
   }
 
   getUserGames(): Observable<any> {
@@ -44,5 +43,4 @@ export class UserGamesComponent implements OnInit {
         catchError(err => throwError(err))
       );
   }
-
 }

@@ -1,0 +1,25 @@
+<p-table [value]="games">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Image</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Theme</th>
+      <th>Langue</th>
+      <th>Poids</th>
+      <th>Editeur</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-game>
+    <tr *ngFor="let g of games[0]">
+      <td><img alt="image {{g.jeu.nom}}" src="{{g.jeu.url_media}}"></td>
+      <td>{{g.jeu.nom}}</td>
+      <td>{{g.jeu.description}}</td>
+      <td>{{g.jeu.theme_id.nom}}</td>
+      <td>{{g.jeu.langue}}</td>
+      <td>{{g.jeu.poids}}</td>
+      <td>{{g.jeu.editeur_id.nom}}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
