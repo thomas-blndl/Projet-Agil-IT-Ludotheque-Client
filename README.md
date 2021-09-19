@@ -1,5 +1,7 @@
 # LudothequeClient
 
+Création d'une ludothèque en ligne avec Angular
+
 ## Version Widget
 
 Utilisation de la librairie PrimeNG
